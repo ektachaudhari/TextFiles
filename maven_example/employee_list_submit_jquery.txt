@@ -1,0 +1,91 @@
+<script>
+		   $(document).ready(function() {
+		$("form").submit(function() {			
+			var name = $('#name').val();
+			var surname = $('#surname').val();	
+			console.log(name);
+			console.log(surname);
+			$.ajax({
+				contentType: "application/x-www-form-urlencoded;charset=utf-8",
+				url : "http://localhost:8080/user-app/rest/employee/create",
+				type : "POST",
+				data : "nameText="+name+"&surnameText="+surname,				
+				cache : false,
+				//dataType : "json",
+				success : function(response) {
+					var empResponse=JSON.stringify(response);
+					employeeList.push(empResponse);
+					console.log(employeeList);
+					console.log("added");
+					
+				},
+				error : function(error) {
+				}				
+			});	
+		});
+	});   
+	
+	
+	
+		  /* function bindButtonClick(){			  	
+				console.log("scfdf1"); 
+				var name = $('#name').val();
+				var surname = $('#surname').val();
+				console.log(name); 
+				console.log(surname); 
+				$.ajax({
+					contentType: "application/x-www-form-urlencoded;charset=utf-8",
+					url : "http://localhost:8080/user-app/rest/employee/create",
+					type : "POST",
+					data : "name="+name+"&surname="+surname,				
+					cache : false,
+					//dataType : "json",
+					success : function(response) {
+						var empResponse=JSON.stringify(response);
+						employeeList.push(empResponse);
+						console.log(employeeList);
+						console.log("added");
+						
+					},
+					error : function(error) {
+					}				
+				});
+		  } */
+		  
+	 /* $("#addData").submit(function(e) {   
+		console.log("addData");
+	    $.ajax({
+	           type: "POST",
+	           url: url,
+	           data: $("#addData").serialize(), // serializes the form's elements.
+	           success: function(data)
+	           {
+	        	   employeeList.push(data);
+	        	   console.log(employeeList);
+	               //alert(data);
+	           },error:function(){}
+	         });	    
+	});  */
+	
+</script>
+
+
+
+
+
+
+/* function f( form ){
+		console.log("1");
+	    var formData = $(form).serialize();
+	    console.log("2");
+	    att=form.attr("http://localhost:8080/user-app/rest/employee/create") ;
+	    console.log("3");
+	    $.post(att, formData).done(function(data){
+	    	console.log(data);
+	    	employeeList.push(data);
+	    	console.log(employeeList);
+	        alert(data);
+	    });
+	    return true;
+	}
+ */

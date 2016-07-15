@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee Detail</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+						$("#htmlForm").submit(function() {
+											var employee = JSON.stringify({
+												"name" : $('#name').val(),
+												"surname" : $('#surname').val()
+											});
+											alert("submit");
+											$.ajax({
+														contentType :"application/json",
+														url : "http://localhost:8080/HibernateSampleExample/rest/write/employee/create",
+														type : "POST",
+														data : employee,
+														cache : false,
+														success : function(
+																response) {
+															alert("success");
+															employeeList.push(response);
+
+														},
+														error : function(error) {
+														}
+													});
+
+										});
+					});
+</script>
+
+
+</head>
+<body>
+	<div style="padding-left: 100px; font-family: cursive;">
+		<h2>create Employee</h2>
+		<form action="#" id="htmlForm">
+			<div style="width: 200px; text-align: left;">
+				<div style="padding: 10px;">
+					Employee Name: <input type="text" name="name" id="name"/>
+				</div>
+				<div style="padding: 10px;">
+					Employee Surname: <input type="text" name="surname" id="surname"/>
+				</div>
+				<div style="padding: 10px; text-align: center">
+					<input type="submit" value="Submit" />
+				</div>
+		</form>
+	</div>
+
+</body>
+</html>

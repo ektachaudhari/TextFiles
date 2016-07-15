@@ -1,0 +1,32 @@
+/* var employeeList;
+	 $.ajax({
+	 url: 'http://localhost:8080/user-app/rest/employee/list',
+	 type: 'GET',
+	 dataType:'json',
+	 success: function(data) { 
+	 employeeList=JSON.stringify(data);
+	 console.log(employeeList);
+	 };
+	 
+	 error: function(error){}		
+	 });  */
+
+<script>
+		var employeeList=[];
+		$(document).ready(function(){	    
+
+		    $.getJSON("http://localhost:8080/user-app/rest/employee/list",function (json) {	
+		        	var tr=[];
+		        	for(var i=0;i<json.length;i++){
+		        		tr.push('<tr>');
+		                tr.push("<td>" + json[i].empid + "</td>");
+		                tr.push("<td>" + json[i].name + "</td>");
+		                tr.push("<td>" + json[i].surname + "</td>");
+		                tr.push('</tr>');		        		
+		        	}
+		        	$('table').append($(tr.join('')));
+		        
+		    });
+		});
+
+</script>
